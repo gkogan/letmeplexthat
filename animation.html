@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let Me Plex That - Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        #browser {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+        #addressBar {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+        }
+        #content {
+            padding: 20px;
+        }
+        #searchBox {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        #errorMessage {
+            color: red;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="browser">
+        <input type="text" id="addressBar" value="https://www.perplexity.ai" readonly>
+        <div id="content">
+            <img src="/api/placeholder/200/50" alt="Perplexity Logo">
+            <input type="text" id="searchBox" readonly>
+        </div>
+    </div>
+    <div id="errorMessage"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        const searchBox = document.getElementById('searchBox');
+        const errorMessage = document.getElementById('errorMessage');
+        let charIndex = 0;
+
+        function typeQuery() {
+            if (!query) {
+                errorMessage.textContent = "Error: No search query provided. Please go back and enter a search query.";
+                return;
+            }
+
+            if (charIndex < query.length) {
+                searchBox.value += query.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeQuery, 100);
+            } else {
+                setTimeout(redirectToPerplexity, 1000);
+            }
+        }
+
+        function redirectToPerplexity() {
+            if (query) {
+                const perplexityURL = `https://www.perplexity.ai/search?q=${encodeURIComponent(query)}`;
+                window.location.href = perplexityURL;
+            }
+        }
+
+        // Start the animation only if there's a query
+        if (query) {
+            setTimeout(typeQuery, 1000);
+        } else {
+            errorMessage.textContent = "Error: No search query provided. Please go back and enter a search query.";
+        }
+    </script>
+</body>
+</html>
