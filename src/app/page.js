@@ -1,17 +1,22 @@
 // src/app/page.js
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect, useRef } from 'react'
 
 export default function Home() {
   const [query, setQuery] = useState('')
-  const router = useRouter()
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (query.trim()) {
-      router.push(`/animate?q=${encodeURIComponent(query)}`)
+      window.open(`/animate?q=${encodeURIComponent(query)}`, '_blank')
     }
   }
 
@@ -25,6 +30,8 @@ export default function Home() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter your search query"
           className="w-full px-4 py-2 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ref={inputRef}
+          autoFocus
         />
         <button
           type="submit"
