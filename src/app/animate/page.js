@@ -1,10 +1,24 @@
 // src/app/animate/page.js
+import { Suspense } from 'react'
+import AnimationContent from './AnimationContent'
+
+export default function Animate() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <Suspense fallback={<div>Loading...</div>}>
+        <AnimationContent />
+      </Suspense>
+    </div>
+  )
+}
+
+// src/app/animate/AnimationContent.js
 'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-export default function Animate() {
+export default function AnimationContent() {
   const [typedQuery, setTypedQuery] = useState('')
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -36,19 +50,17 @@ export default function Animate() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-2xl p-4 bg-white rounded-lg shadow-md">
-        <div className="mb-4 p-2 bg-gray-200 rounded">
-          <span className="text-gray-600">https://www.perplexity.ai</span>
-        </div>
-        <div className="mt-8">
-          <input
-            type="text"
-            value={typedQuery}
-            readOnly
-            className="w-full px-4 py-2 text-lg border border-gray-300 rounded-md"
-          />
-        </div>
+    <div className="w-full max-w-2xl p-4 bg-white rounded-lg shadow-md">
+      <div className="mb-4 p-2 bg-gray-200 rounded">
+        <span className="text-gray-600">https://www.perplexity.ai</span>
+      </div>
+      <div className="mt-8">
+        <input
+          type="text"
+          value={typedQuery}
+          readOnly
+          className="w-full px-4 py-2 text-lg border border-gray-300 rounded-md"
+        />
       </div>
     </div>
   )
