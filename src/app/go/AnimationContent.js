@@ -79,7 +79,7 @@ export default function AnimationContent() {
         clearTimeout(typingTimeout)
       }
     }
-  }, [query, router])
+  }, [query, router, typeQuery]) // Add typeQuery to the dependency array
 
   const [showAskButton, setShowAskButton] = useState(true)
   const askButtonRef = useRef(null)
@@ -115,7 +115,7 @@ export default function AnimationContent() {
 
     setShowCursor(true)
     requestAnimationFrame(moveCursor)
-  }, [cursorPosition, query, router])
+  }, [query, router]) // Remove cursorPosition from the dependency array
 
   useEffect(() => {
     if (!isTyping && typedQuery === query) {

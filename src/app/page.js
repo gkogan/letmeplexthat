@@ -56,7 +56,7 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-2 text-white text-shadow-lg">
         Let me <span className="line-through text-red-300">google</span> plex that for you.
       </h1>
-      <p className="text-lg mb-8 text-center text-white text-shadow">It's a new world. Teach your friends.</p>
+      <p className="text-lg mb-8 text-center text-white text-shadow">It&apos;s a new world. Teach your friends.</p>
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <input
           type="text"
@@ -108,7 +108,7 @@ export default function Home() {
       )}
       
       <p className="mt-8 text-sm text-white text-shadow text-center max-w-2xl">
-        Yes, the verb is "plex," <a href="https://x.com/aravsrinivas/status/1827484208459345995" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">according to</a> the founderof Perplexity.
+        Yes, the verb is &quot;plex,&quot; <a href="https://x.com/aravsrinivas/status/1827484208459345995" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">according to</a> the founderof Perplexity.
         <br />
         Made by{' '}
         <a href="https://www.gkogan.co" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:underline">
