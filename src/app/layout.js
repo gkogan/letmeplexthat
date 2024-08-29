@@ -4,8 +4,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Let Me Plex That",
-  description: "Let Me Plex That for you",
+  title: "Let me plex that for you",
+  description: "Help your friends switch to Perplexity and get smarter"
 };
 
 export default function RootLayout({ children }) {

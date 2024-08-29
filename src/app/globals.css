@@ -17,26 +17,17 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #f0f0f0; /* Fallback color */
+  background-image: url('/public/background.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 h1 {
@@ -46,5 +37,11 @@ h1 {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-shadow {
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5), 0 0 2px rgba(0, 0, 0, 0.7);
+  }
+  .text-shadow-lg {
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.8), 0 0 3px rgba(0, 0, 0, 1);
   }
 }
